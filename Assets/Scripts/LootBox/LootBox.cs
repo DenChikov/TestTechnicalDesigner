@@ -20,7 +20,7 @@ public class LootBox : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         textTake = gameObject.transform.GetChild(0);
-        filePath = Path.Combine(Application.dataPath, "Save/data.txt");
+        filePath = Path.Combine(Application.persistentDataPath, "data.txt");
 
         currentChance = float.Parse(LoadData());
     }

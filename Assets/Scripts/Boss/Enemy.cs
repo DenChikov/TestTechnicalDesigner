@@ -73,7 +73,6 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
         stateMachine.Update();
     }
     private void OnTriggerEnter(Collider other)
@@ -133,7 +132,7 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator Hand(Vector3 pos)
     {
-        pos.y = 0;
+        pos.y = 0.4f;
         transform.LookAt(player.transform, Vector3.up);
         float elapsed = 0;
         Vector3 oldPosition = goMove.transform.position;
