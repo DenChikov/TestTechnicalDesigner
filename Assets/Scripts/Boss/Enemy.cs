@@ -73,6 +73,7 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
         stateMachine.Update();
     }
     private void OnTriggerEnter(Collider other)
