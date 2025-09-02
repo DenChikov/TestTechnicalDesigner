@@ -49,7 +49,7 @@ public class LootBox : MonoBehaviour
             loot.transform.position = gameObject.transform.position;
             gameObject.SetActive(false);
             streakSuccess += 1;
-            if(streakSuccess >= 2)
+            if(streakSuccess >= 1)
             {
                 streakSuccess = 0;
                 currentChance = 10;
