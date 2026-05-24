@@ -17,22 +17,6 @@ public class WaveDamage : MonoBehaviour
         time = timeLife;
     }
 
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            bool isTargetInner = Vector3.Distance(other.transform.position, gameObject.transform.position)
-                > innerRadius;
-            if (isTargetInner)
-            {
-                other.gameObject.TryGetComponent<Health>(out Health health);
-                health.TakeDamage(damage);
-            }
-        }
-    }
-
-
     private void Update()
     {
         if (time > 0)

@@ -7,6 +7,7 @@ public class bullet : MonoBehaviour
     [SerializeField] private float rotation;
     [SerializeField] private float lifeTime;
     [SerializeField] private float damage;
+    public float DamageAmount => damage;
     private float oldLifeTime;
     private GameObject player;
     private Rigidbody rb;
@@ -38,12 +39,11 @@ public class bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
+        // Урон обрабатывает PlayerHealthSystem на игроке (OnTriggerEnter с other = эта пуля).
         if (collision.CompareTag("Player"))
-        {
-            collision.gameObject.TryGetComponent<Health>(out Health health);
-            health.TakeDamage(damage);
-        }
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        else
+            gameObject.SetActive(false);
     }
 
 }
