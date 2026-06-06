@@ -10,6 +10,8 @@ public class WaveComponent : MonoBehaviour
     public float time;
     [HideInInspector] public Vector3 oldScale;
     [HideInInspector] public bool waveActivate;
+    [Tooltip("Уже нанесла ли текущая волна урон игроку (чтобы бить один раз за активацию).")]
+    [HideInInspector] public bool damageDealt;
     [Header("RadiusWave")]
     [Tooltip("Начальный внешний радиус кольца")]
     public float outsideRadius;

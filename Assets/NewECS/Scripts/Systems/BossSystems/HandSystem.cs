@@ -95,6 +95,7 @@ public class HandSystem : MonoBehaviour, ISystem
                 wave.waveGo.SetActive(true);
                 wave.currentInnerRadius = wave.innerRadius;
                 wave.currentOutsideRadius = wave.outsideRadius;
+                wave.damageDealt = false;
             }
 
             wave.waveGo.transform.position = wave.waveGoPos;
@@ -121,6 +122,9 @@ public class HandSystem : MonoBehaviour, ISystem
 
     private void CheckWaveDamage()
     {
+        // Волна бьёт игрока только один раз за активацию, а не каждый кадр,
+        // пока он находится внутри растущего кольца.
+        if (wave.damageDealt) return;
 
         Collider[] hits = Physics.OverlapSphere(wave.waveGoPos, wave.currentOutsideRadius,
             data.playerLayerMask);
@@ -135,7 +139,16 @@ public class HandSystem : MonoBehaviour, ISystem
 
             if (hit.TryGetComponent<PlayerHealthDataComponent>(out var health))
             {
+                // Волна бьёт только если игрок стоит на земле — в прыжке урона нет.
+                // Если игрок сейчас в воздухе, не наносим урон и не помечаем волну
+                // как "ударившую", чтобы она могла попасть позже, если игрок приземлится,
+                // пока кольцо ещё проходит через него.
+                var controller = hit.GetComponentInParent<StarterAssets.FirstPersonController>();
+                if (controller != null && !controller.Grounded)
+                    continue;
+
                 health.pendingDamage += wave.waveGo.GetComponent<DamageComponent>().damage;
+                wave.damageDealt = true;
                 break;
             }
         }

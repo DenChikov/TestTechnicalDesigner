@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerShootSystem : MonoBehaviour, ISystem
 {
+
     private PlayerShootComponent playerShootComponents;
     public void Init()
     {
@@ -18,9 +19,10 @@ public class PlayerShootSystem : MonoBehaviour, ISystem
             playerShootComponents.timer = playerShootComponents.timeBetweenShoot;
             StartCoroutine(HitMarker());
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit,
-                Mathf.Infinity, playerShootComponents.enemyDamageLayer))
+            if (Physics.SphereCast(Camera.main.transform.position, playerShootComponents.shootRayRadius,
+                Camera.main.transform.forward, out hit, Mathf.Infinity, playerShootComponents.enemyDamageLayer))
             {
+                Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * hit.distance, Color.red, 1f);
                 if (hit.collider.GetComponentInParent<IHealthBoss>(true) is IHealthBoss hp) hp.health -= playerShootComponents.damage;
             }
         }

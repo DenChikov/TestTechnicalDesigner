@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class PlayerShootComponent : MonoBehaviour
 {
     public float damage = 25f;
+    public float shootRayRadius = 0.5f;
     public LayerMask enemyDamageLayer;
     public float timeBetweenShoot;
     public Image markerHit;

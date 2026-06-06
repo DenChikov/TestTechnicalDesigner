@@ -1,13 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// Читает один ScriptableObject (GameBalanceConfig) и раскидывает значения
-/// по data-компонентам сцены и по сущностям, созданным в рантайме (пул пуль).
-///
-/// DefaultExecutionOrder(-100) гарантирует, что Awake этой системы выполнится
-/// раньше MainSystem.Awake, который вызывает Init() у всех ISystem.
-/// Поэтому к моменту Init остальных систем поля компонентов уже проставлены.
-/// </summary>
 public class ConfigurationSystem : MonoBehaviour, ISystem
 {
     [Tooltip("Единый ScriptableObject с балансом игры. Создать через Create → NewECS → Game Balance Config.")]
@@ -23,10 +15,6 @@ public class ConfigurationSystem : MonoBehaviour, ISystem
 
         ApplyToSceneComponents();
     }
-
-    /// <summary>
-    /// Вызывается из MainSystem после цикла Init всех систем — пул пуль уже создан в ShootSystem.Init.
-    /// </summary>
     public void ApplyRuntimeFromConfig()
     {
         if (config == null) return;
@@ -48,6 +36,7 @@ public class ConfigurationSystem : MonoBehaviour, ISystem
         ApplyWave();
         ApplyShoot();
         ApplySceneDamageComponents();
+        ApplyLootBoxes();
     }
 
     private void ApplyPlayerHealth()
@@ -70,6 +59,7 @@ public class ConfigurationSystem : MonoBehaviour, ISystem
         {
             c.damage = config.player.shoot.damage;
             c.timeBetweenShoot = config.player.shoot.timeBetweenShoot;
+            c.shootRayRadius = config.player.shoot.shootRayRadius;
         }
     }
 
@@ -144,6 +134,19 @@ public class ConfigurationSystem : MonoBehaviour, ISystem
         foreach (var c in components)
         {
             c.damage = GetDamageByType(c.damageType);
+        }
+    }
+
+    private void ApplyLootBoxes()
+    {
+        var components = FindObjectsByType<LootBoxComponent>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (var c in components)
+        {
+            c.baseChance        = config.loot.baseChance;
+            c.chanceIncrement   = config.loot.chanceIncrement;
+            c.hardPityThreshold = config.loot.hardPityThreshold;
         }
     }
 

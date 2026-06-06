@@ -1,11 +1,6 @@
 using System;
 using UnityEngine;
 
-/// <summary>
-/// Единый источник правды по геймплейному балансу.
-/// Создаётся через Assets → Create → NewECS → Game Balance Config.
-/// Раскидывается по компонентам в ConfigurationSystem на старте сцены.
-/// </summary>
 [CreateAssetMenu(fileName = "GameBalanceConfig", menuName = "NewECS/Game Balance Config", order = 0)]
 public class GameBalanceConfig : ScriptableObject
 {
@@ -15,6 +10,9 @@ public class GameBalanceConfig : ScriptableObject
     [Header("Boss")]
     public BossSection boss = new BossSection();
 
+    [Header("Loot")]
+    public LootSection loot = new LootSection();
+
     // ---------------- Player ----------------
 
     [Serializable]
@@ -23,7 +21,7 @@ public class GameBalanceConfig : ScriptableObject
         [Header("Health")]
         public PlayerHealthSection health = new PlayerHealthSection();
 
-        [Header("Shoot")]
+        [Header("ShootPlayer")]
         public PlayerShootSection shoot = new PlayerShootSection();
 
         [Serializable]
@@ -41,6 +39,9 @@ public class GameBalanceConfig : ScriptableObject
 
             [Min(0.01f), Tooltip("Кулдаун между выстрелами, сек.")]
             public float timeBetweenShoot = 0.5f;
+
+            [Min(0f), Tooltip("Радиус SphereCast луч которым игрок сканет коллизию при выстреле.")]
+            public float shootRayRadius = 0.5f;
         }
     }
 
@@ -141,5 +142,20 @@ public class GameBalanceConfig : ScriptableObject
             [Min(0f), Tooltip("Урон пули босса (DamageType.Bullet).")]
             public float damage = 10f;
         }
+    }
+
+    // ---------------- Loot ----------------
+
+    [Serializable]
+    public class LootSection
+    {
+        [Range(0f, 1f), Tooltip("Базовый шанс редкого предмета при первом открытии сундука.")]
+        public float baseChance = 0.2f;
+
+        [Range(0f, 1f), Tooltip("Прирост шанса за каждую неудачную попытку подряд.")]
+        public float chanceIncrement = 0.06f;
+
+        [Min(1), Tooltip("Гарантированное выпадение после N неудач подряд (hard pity).")]
+        public int hardPityThreshold = 8;
     }
 }

@@ -19,9 +19,6 @@ public class MainSystem : MonoBehaviour
 
     private void Update()
     {
-        //debugging
-        BossCombatDataComponent data = FindAnyObjectByType<BossCombatDataComponent>();
-        Debug.Log(data.phaseData.Value);
         for (int i = 0; i < systems.Length; i++)
         {
             systems[i].Execute();

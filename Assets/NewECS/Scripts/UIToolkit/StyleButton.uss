@@ -1,0 +1,6 @@
+:root {
+}
+
+.container {
+    background-color: rgb(0, 74, 144);
+}

@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/NewECS/Scripts/UIToolkit/StyleButton.uss?fileID=7433441132597879392&amp;guid=18e391b253c1df1469119bfc1a59d9de&amp;type=3#StyleButton"/>
+    <ui:VisualElement style="flex-grow: 1; background-color: rgb(0, 4, 31);">
+        <ui:Label text="Label" name="labelResult" style="top: 43px; justify-content: center; align-self: center; align-content: center; width: 481px; -unity-text-align: upper-center; background-color: rgb(0, 4, 31); color: rgb(255, 255, 255);"/>
+        <ui:Button text="Start Loot" name="StartLoot" class="container" style="height: 150px; position: relative; top: 126px; bottom: auto;"/>
+        <ui:Button text="Exit" name="Exit" class="container" style="height: 150px; position: relative; top: 131px; bottom: auto;"/>
+    </ui:VisualElement>
+</ui:UXML>

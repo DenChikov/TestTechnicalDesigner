@@ -18,20 +18,21 @@ MonoBehaviour:
     shoot:
       damage: 25
       timeBetweenShoot: 0.5
+      shootRayRadius: 0.25
   boss:
     health:
       maxHealth: 1000
     combat:
-      aggroRadius: 12
+      aggroRadius: 26
     hand:
-      windUpTime: 1
-      damageZoneTime: 0.3
+      windUpTime: 1.2
+      damageZoneTime: 2
       punchTime: 0.3
       returnTime: 0.5
       damage: 30
     wave:
       scaleAdd: {x: 0.1, y: 0, z: 0.1}
-      timeLife: 1
+      timeLife: 2
       outsideRadius: 3
       innerRadius: 1
       damage: 20
@@ -40,7 +41,11 @@ MonoBehaviour:
       timeBetweenShoot: 0.5
       valueShootMax: 3
     bullet:
-      bulletSpeed: 9
-      bulletRotationSpeed: 200
-      bulletLifeTime: 10
+      bulletSpeed: 10
+      bulletRotationSpeed: 160
+      bulletLifeTime: 5
       damage: 10
+  loot:
+    baseChance: 0.2
+    chanceIncrement: 0.06
+    hardPityThreshold: 15
