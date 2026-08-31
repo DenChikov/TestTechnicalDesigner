@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Remove-Item \"e:\\\\Projects\\\\UnityProjects\\\\TestTechnicalDesigner\\\\Assets\\\\NewECS\\\\Scripts\\\\UIToolkit\\\\LootBoxUI.uss\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"e:\\\\Projects\\\\UnityProjects\\\\TestTechnicalDesigner\\\\Assets\\\\NewECS\\\\Scripts\\\\UIToolkit\\\\LootBoxUI.uss.meta\" -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

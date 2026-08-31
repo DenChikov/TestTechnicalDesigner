@@ -1,0 +1,158 @@
+/* =========================================================
+   CLOVER PIT — стилизация лут-автомата
+   Грязный ретро-кабинет: тёплый янтарь / латунь / клевер /
+   кровавый красный, CRT-свечение через text-outline + shadow.
+   Имена/структуру элементов C# не трогает.
+   ========================================================= */
+
+/* === Корневой фон: тёплый, почти чёрный, «зажатый» кабинет === */
+.root-bg {
+    flex-grow: 1;
+    background-color: rgb(13, 11, 8);
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    border-width: 14px;
+    border-color: rgb(28, 22, 14);
+    border-radius: 4px;
+}
+
+/* === Заголовок: латунная вывеска с янтарным свечением === */
+.title-label {
+    color: rgb(244, 196, 96);
+    font-size: 40px;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    letter-spacing: 10px;
+    margin-bottom: 30px;
+    -unity-text-outline-width: 1.2px;
+    -unity-text-outline-color: rgb(120, 70, 18);
+    text-shadow: 0 0 16px rgba(247, 178, 60, 0.55);
+}
+
+/* === Барабан: латунная рамка с тёмным «нутром» === */
+.reel-frame {
+    border-color: rgb(176, 132, 56);
+    border-width: 4px;
+    border-radius: 6px;
+    padding: 8px;
+    background-color: rgb(20, 15, 9);
+    margin-bottom: 28px;
+    -unity-background-image-tint-color: rgb(60, 45, 25);
+}
+
+.reel-window {
+    width: 320px;
+    height: 320px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(8, 6, 4);
+    border-radius: 3px;
+    border-width: 2px;
+    border-color: rgb(70, 50, 24);
+}
+
+.reel-slot {
+    flex: 1;
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    font-size: 40px;
+    color: rgb(92, 66, 30);
+    border-color: rgb(40, 28, 14);
+    border-width: 0 1px 0 0;
+}
+
+/* Центральная ячейка — «выигрышная линия», подсвечена клевером */
+.reel-slot--center {
+    background-color: rgb(16, 24, 12);
+    color: rgb(150, 200, 96);
+    border-color: rgb(96, 140, 60);
+    border-width: 0 2px 0 2px;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(30, 55, 20);
+    text-shadow: 0 0 12px rgba(120, 190, 80, 0.5);
+}
+
+/* === Результат (labelResult) === */
+.result-label {
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    font-size: 34px;
+    color: rgb(170, 150, 120);
+    white-space: normal;
+    background-color: rgba(0, 0, 0, 0);
+    letter-spacing: 3px;
+    transition-property: color, -unity-text-outline-color;
+    transition-duration: 0.25s;
+}
+
+/* Класс навешивается из кода при РЕДКОМ дропе — янтарное золото со свечением */
+.result-rare {
+    color: rgb(255, 214, 92);
+    -unity-text-outline-width: 1.2px;
+    -unity-text-outline-color: rgb(140, 80, 20);
+    text-shadow: 0 0 22px rgba(255, 190, 70, 0.85);
+}
+
+/* Класс при МУСОРНОМ дропе — тусклый серо-бурый, «погасший» */
+.result-trash {
+    color: rgb(120, 108, 92);
+    -unity-text-outline-width: 0;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+/* === Кнопка SPIN (StartLoot): рычаг автомата, клевер + латунь === */
+.btn-spin {
+    background-color: rgb(28, 56, 24);
+    color: rgb(247, 205, 110);
+    border-color: rgb(176, 132, 56);
+    border-width: 3px;
+    border-radius: 10px;
+    height: 84px;
+    width: 300px;
+    font-size: 26px;
+    -unity-font-style: bold;
+    letter-spacing: 6px;
+    margin-bottom: 16px;
+    -unity-text-outline-width: 0.8px;
+    -unity-text-outline-color: rgb(90, 55, 16);
+    transition-property: background-color, scale, border-color;
+    transition-duration: 0.12s;
+}
+
+.btn-spin:hover {
+    background-color: rgb(44, 84, 36);
+    border-color: rgb(224, 178, 86);
+    scale: 1.05 1.05;
+}
+
+.btn-spin:active {
+    background-color: rgb(18, 36, 15);
+    scale: 0.95 0.95;
+    border-color: rgb(140, 100, 40);
+}
+
+/* === Кнопка EXIT: тусклый кровавый красный, изношенная === */
+.btn-exit {
+    background-color: rgb(48, 12, 10);
+    color: rgb(196, 84, 72);
+    border-color: rgb(120, 36, 30);
+    border-width: 2px;
+    border-radius: 6px;
+    height: 46px;
+    width: 170px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    -unity-font-style: bold;
+    transition-property: background-color, scale;
+    transition-duration: 0.12s;
+}
+
+.btn-exit:hover {
+    background-color: rgb(86, 18, 14);
+    scale: 1.03 1.03;
+}
+
+.btn-exit:active {
+    scale: 0.97 0.97;
+}

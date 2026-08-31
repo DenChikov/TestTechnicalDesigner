@@ -47,5 +47,5 @@ MonoBehaviour:
       damage: 10
   loot:
     baseChance: 0.2
-    chanceIncrement: 0.06
-    hardPityThreshold: 15
+    chanceIncrement: 0.01
+    hardPityThreshold: 8

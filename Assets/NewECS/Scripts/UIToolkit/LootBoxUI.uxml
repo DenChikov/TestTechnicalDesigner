@@ -1,8 +1,14 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/NewECS/Scripts/UIToolkit/StyleButton.uss?fileID=7433441132597879392&amp;guid=18e391b253c1df1469119bfc1a59d9de&amp;type=3#StyleButton"/>
-    <ui:VisualElement style="flex-grow: 1; background-color: rgb(0, 4, 31);">
-        <ui:Label text="Label" name="labelResult" style="top: 43px; justify-content: center; align-self: center; align-content: center; width: 481px; -unity-text-align: upper-center; background-color: rgb(0, 4, 31); color: rgb(255, 255, 255);"/>
-        <ui:Button text="Start Loot" name="StartLoot" class="container" style="height: 150px; position: relative; top: 126px; bottom: auto;"/>
-        <ui:Button text="Exit" name="Exit" class="container" style="height: 150px; position: relative; top: 131px; bottom: auto;"/>
+    <Style src="project://database/Assets/NewECS/Scripts/UIToolkit/LootBoxUI.uss?fileID=7433441132597879392&amp;guid=fcf738caa06f319449c89054f871c939&amp;type=3#LootBoxUI"/>
+    <ui:VisualElement class="root-bg">
+        <ui:VisualElement class="reel-frame">
+            <ui:VisualElement class="reel-window">
+                <ui:Label text="" name="labelResult" class="result-label"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button text="START LOOT&#10;" name="StartLoot" class="btn-spin"/>
+        <ui:Button text="EXIT" name="Exit" class="btn-exit"/>
+        <ui:Label text="Label" name="baseChanceText" style="-unity-text-align: upper-center; white-space: pre; align-self: flex-end; justify-content: space-around; align-items: stretch; align-content: auto; width: auto; border-right-width: 0; bottom: 250px; color: rgb(255, 255, 255);"/>
+        <ui:Label text="Label" name="hardPityText" style="-unity-text-align: upper-center; white-space: pre; align-self: flex-end; justify-content: space-around; align-items: stretch; align-content: auto; width: auto; border-right-width: 0; bottom: 220px; color: rgb(255, 255, 255);"/>
     </ui:VisualElement>
 </ui:UXML>
